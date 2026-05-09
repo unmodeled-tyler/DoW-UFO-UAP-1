@@ -1,9 +1,9 @@
 {
-  "built_at": "2026-05-09T02:57:19.347528+00:00",
+  "built_at": "2026-05-09T03:46:02.864218+00:00",
   "parser_version": "0.1.0",
-  "processed_dataset_count": 44,
-  "source_count": 44,
-  "page_count": 3604,
+  "processed_dataset_count": 45,
+  "source_count": 45,
+  "page_count": 3605,
   "packet_count": 797,
   "classification_marking_count": 480,
   "triage_count": 3,
@@ -11,10 +11,10 @@
   "target_shards": 4,
   "batch_counts": {
     "batch_001": 40,
-    "batch_002": 4
+    "batch_002": 5
   },
   "document_category_counts": {
-    "OTHER": 1990,
+    "OTHER": 1991,
     "SIGHTING_REPORT": 841,
     "PHOTO_OR_IMAGE": 183,
     "NEWSPAPER_CLIPPING": 169,
@@ -25,7 +25,7 @@
     "FBI_ROUTING_SLIP": 20
   },
   "classification_marking_counts": {
-    "NONE": 3124,
+    "NONE": 3125,
     "RESTRICTED": 200,
     "SECRET": 149,
     "CONFIDENTIAL": 91,
@@ -35,7 +35,7 @@
     "NOFORN": 6
   },
   "ocr_quality_counts": {
-    "OK": 3242,
+    "OK": 3243,
     "VERY_SHORT": 286,
     "EMPTY": 49,
     "MIXED": 27
