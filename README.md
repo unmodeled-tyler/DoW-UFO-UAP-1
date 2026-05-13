@@ -55,10 +55,10 @@ It uses **one dataset repo with internal sharding**, not one repo per source fil
 
 Current build status:
 
-- Source records indexed in this export: 49
-- OCR page rows: 3793
-- Packet rows: 820
-- Detected-marking rows: 485
+- Source records indexed in this export: 63
+- OCR page rows: 3962
+- Packet rows: 828
+- Detected-marking rows: 489
 - Human-triage rows: 3
 - Physical shard target: 4
 
