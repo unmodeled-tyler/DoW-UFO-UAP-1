@@ -43,6 +43,10 @@ configs:
   data_files:
   - split: train
     path: metadata/media_assets.parquet
+- config_name: annotations
+  data_files:
+  - split: train
+    path: data/annotations/*.parquet
 ---
 
 ![Department of War UFO/UAP Release 01 OCR archive thumbnail](assets/thumbnail.png)
@@ -55,11 +59,12 @@ It uses **one dataset repo with internal sharding**, not one repo per source fil
 
 Current build status:
 
-- Source records indexed in this export: 71
-- OCR page rows: 4017
-- Packet rows: 832
+- Source records indexed in this export: 95
+- OCR page rows: 4059
+- Packet rows: 836
 - Detected-marking rows: 489
 - Human-triage rows: 3
+- Embedded PDF annotation/highlight rows: 33
 - Physical shard target: 4
 
 > Early builds may contain only the PDFs processed so far. The goal is to expand this repo to cover all 161 Release 01 records: PDFs with OCR/packet rows, and non-PDF assets represented in source metadata until image/video-specific processing is added.
@@ -75,6 +80,7 @@ sources = load_dataset("unmodeled-tyler/DoW-UFO-UAP-1", "sources")
 markings = load_dataset("unmodeled-tyler/DoW-UFO-UAP-1", "classification_markings")
 triage = load_dataset("unmodeled-tyler/DoW-UFO-UAP-1", "triage")
 media_assets = load_dataset("unmodeled-tyler/DoW-UFO-UAP-1", "media_assets")
+annotations = load_dataset("unmodeled-tyler/DoW-UFO-UAP-1", "annotations")
 ```
 
 ## Tables
@@ -104,6 +110,10 @@ Human-reviewed packet labels such as `KEEP_INVESTIGATE` or `DEPRIORITIZED`, when
 ### `media_assets`
 
 One row per non-PDF media asset mirrored into the dataset. Video rows preserve the raw released file under `media/videos/`, with derived provenance metadata such as SHA256, file size, duration, dimensions, codec information, and optional derived keyframe paths. This table is for provenance and discovery; media interpretation should be framed as "the archive contains/shows..." rather than treating footage as standalone proof of a claim.
+
+### `annotations`
+
+One row per embedded PDF annotation when present, especially source-provided highlight annotations in transcript PDFs. These rows preserve annotation type, author/title metadata, page coordinates, modification timestamps, and best-effort text overlapping the highlighted region. Annotation rows are archival provenance from the PDF itself; they are not model-generated interpretations.
 
 - `pages` and `packets` preserve array-like values as JSON-encoded strings in the corpus export for stable multi-shard Hugging Face loading. Parse with `json.loads` when you want Python lists.
 
